@@ -1,6 +1,6 @@
 import React from "react";
 
-const Student = ({ student }) => (
+const Student = ({ student, toggleCheck }) => (
   <tr style={{ textAlign: "center" }}>
     <td>{student.name}</td>
     <td>{student.class_year}</td>
@@ -8,8 +8,8 @@ const Student = ({ student }) => (
     <td>
       <input
         type="checkbox"
-        checked={student.attending}
-        onClick={() => console.log("You clicked me!")}
+        defaultChecked={student.attending}
+        onClick={() => toggleCheck(student.id)}
       />
     </td>
   </tr>

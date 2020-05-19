@@ -1,7 +1,7 @@
 import React from "react";
 import Student from "./Student";
 
-const StudentsList = ({ filteredStudents }) => (
+const StudentsList = ({ filteredStudents, toggleCheck }) => (
   <table className="ui celled striped padded table unstackable">
     <tbody>
       <tr>
@@ -20,7 +20,7 @@ const StudentsList = ({ filteredStudents }) => (
       </tr>
 
       {filteredStudents.map((student) => (
-        <Student student={student} />
+        <Student key={student.id} student={student} toggleCheck={toggleCheck} />
       ))}
     </tbody>
   </table>

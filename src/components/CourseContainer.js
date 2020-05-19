@@ -8,17 +8,15 @@ class CourseContainer extends Component {
     super();
     this.state = {
       courses: [],
-      courseId: 0,
       selectedCourse: {},
       students: [],
       filteredStudents: [],
     };
   }
 
-  handleCourseChange = (e) => {
-    this.setState({ courseId: parseInt(e) });
-    this.setState({ selectedCourse: this.findCourseById(e) });
-    this.getStudents();
+  handleCourseChange = (id) => {
+    this.setState({ selectedCourse: this.findCourseById(id) });
+    this.getStudents(id);
   };
 
   componentDidMount() {
@@ -35,15 +33,11 @@ class CourseContainer extends Component {
       .then((courses) => this.setState({ courses }));
   };
 
-  getStudents = () => {
-    console.log("inside get students function");
-    // let course = this.findCourseById(this.state.courseId);
-    let course = this.state.courses[0];
-    console.log(course);
+  getStudents = (id) => {
+    let course = this.findCourseById(id);
     let students = this.state.students.filter(
       (student) => student.course === course.name
     );
-    console.log(students);
     this.setState({ filteredStudents: students });
   };
   fetchStudents = () => {
@@ -53,8 +47,29 @@ class CourseContainer extends Component {
       .then((students) => this.setState({ students }));
   };
 
+  toggleCheck = (id) => {
+    let modiifiedStudent = this.state.students.find(
+      (student) => student.id === id
+    );
+    modiifiedStudent.attending = !modiifiedStudent.attending;
+    fetch(`http://localhost:6001/students/${id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        attending: modiifiedStudent.attending,
+      }),
+    });
+  };
+
+  selectedCourseStudents = () => {
+    return this.state.students.filter(
+      (student) => student.course === this.state.selectedCourse.name
+    );
+  };
+
   render() {
-    // console.log(this.state.courses);
     const { courses } = this.state;
     return (
       <div className="ui grid container">
@@ -63,7 +78,10 @@ class CourseContainer extends Component {
           courses={courses}
           handleCourseChange={this.handleCourseChange}
         />
-        <StudentsList filteredStudents={this.state.filteredStudents} />
+        <StudentsList
+          filteredStudents={this.selectedCourseStudents()}
+          toggleCheck={this.toggleCheck}
+        />
       </div>
     );
   }
