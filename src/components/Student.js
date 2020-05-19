@@ -1,15 +1,15 @@
 import React from "react";
 
-const Student = () => (
+const Student = ({ student, toggleCheck }) => (
   <tr style={{ textAlign: "center" }}>
-    <td>"...your code here"</td>
-    <td>"...your code here"</td>
-    <td>"...your code here"</td>
+    <td>{student.name}</td>
+    <td>{student.class_year}</td>
+    <td>{student.percentage}</td>
     <td>
       <input
         type="checkbox"
-        checked={null /* if true, this checkbox will be checked! */}
-        onClick={() => console.log("You clicked me!")}
+        defaultChecked={student.attending}
+        onClick={() => toggleCheck(student.id)}
       />
     </td>
   </tr>
