@@ -5,7 +5,7 @@ const CourseSelector = props => {
     <div className="sixteen wide column">
       <select
         className="ui dropdown"
-        onChange={() => console.log("CourseSelector handle change here!")}
+        onChange={(e) => props.handleChange(e)}
         defaultValue="select"
       >
         {/* you shouldn't need to touch these options below */}
