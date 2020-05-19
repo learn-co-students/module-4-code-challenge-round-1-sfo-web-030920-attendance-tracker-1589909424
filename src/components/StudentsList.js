@@ -1,7 +1,7 @@
 import React from "react";
 import Student from "./Student";
 
-const StudentsList = () => (
+const StudentsList = ({ students, toggleAttendingCheckbox }) => (
   <table className="ui celled striped padded table unstackable">
     <tbody>
       <tr>
@@ -19,7 +19,13 @@ const StudentsList = () => (
         </th>
       </tr>
 
-      {/* a row per student should go here */}
+      {students.map((student) => (
+        <Student
+          key={student.id}
+          student={student}
+          toggleAttendingCheckbox={toggleAttendingCheckbox}
+        />
+      ))}
     </tbody>
   </table>
 );
