@@ -14,7 +14,7 @@ const CourseSelector = props => {
         </option>
         {props.courses.map(course => {
           return (
-            <option key={course.id} className="item" value={course.name}>
+            <option key={course.id} className="item" value={course.id}>
               {course.name}
             </option>
           );

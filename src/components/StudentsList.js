@@ -19,7 +19,7 @@ const StudentsList = (props) => (
         </th>
       </tr>
 
-      {props.students.map(student => <Student key={student.id} student={student}/>)}
+      {props.students.map(student => <Student key={student.id} student={student} handleAttendene={props.handleAttendene}/>)}
     </tbody>
   </table>
 );

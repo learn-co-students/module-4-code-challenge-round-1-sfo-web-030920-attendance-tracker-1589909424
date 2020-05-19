@@ -8,8 +8,8 @@ const Student = (props) => (
     <td>
       <input
         type="checkbox"
-        checked={props.student.attending}
-        onClick={() => console.log("You clicked me!")}
+        defaultChecked={props.student.attending}
+        onClick={() => props.handleAttendene(props.student)}
       />
     </td>
   </tr>

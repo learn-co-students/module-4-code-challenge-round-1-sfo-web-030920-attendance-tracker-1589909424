@@ -80,7 +80,7 @@
       "class_year": 11,
       "percentage": 82,
       "course": "Rock Climbing",
-      "attending": true
+      "attending": false
     },
     {
       "id": 5974,
@@ -128,7 +128,7 @@
       "class_year": 11,
       "percentage": 97,
       "course": "Rock Climbing",
-      "attending": false
+      "attending": true
     },
     {
       "id": 6002,
@@ -152,7 +152,7 @@
       "class_year": 12,
       "percentage": 76,
       "course": "Rock Climbing",
-      "attending": false
+      "attending": true
     },
     {
       "id": 6016,
@@ -200,7 +200,7 @@
       "class_year": 12,
       "percentage": 73,
       "course": "Rock Climbing",
-      "attending": false
+      "attending": true
     },
     {
       "id": 5941,
